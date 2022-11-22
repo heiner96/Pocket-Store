@@ -3,13 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_objects">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.pocket.store.activies.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_objects"
+        android:name="com.pocket.store.activies.ui.objects.ObjectsFragment"
+        android:label="@string/menu_objetos"
+        tools:layout="@layout/fragment_objects" >
+        <action
+            android:id="@+id/action_nav_objects_to_addObjectFragment"
+            app:destination="@id/addObjectFragment" />
+        <action
+            android:id="@+id/action_nav_objects_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +29,25 @@
         android:name="com.pocket.store.activies.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/addObjectFragment"
+        android:name="com.pocket.store.activies.ui.objects.AddObjectFragment"
+        android:label="@string/menu_agregar_objetos"
+        tools:layout="@layout/fragment_add_object" >
+        <action
+            android:id="@+id/action_addObjectFragment_to_nav_objects"
+            app:destination="@id/nav_objects" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.pocket.store.activies.ui.objects.UpdateObjectFragment"
+        android:label="@string/menu_fragment_update"
+        tools:layout="@layout/fragment_update_objet" >
+        <action
+            android:id="@+id/action_updateFragment_to_nav_objects"
+            app:destination="@id/nav_objects" />
+        <argument
+            android:name="objeto_argumento"
+            app:argType="com.pocket.store.model.Objeto" />
+    </fragment>
 </navigation>

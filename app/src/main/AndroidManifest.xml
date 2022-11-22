@@ -3,6 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.pocket.store">
 
+    <!-- este permiso es para hacer llamadas telefonicas -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <!-- este permiso es para hacer acceder al GPS -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!-- este permiso es para hacer uso del microfono y grabar externo -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

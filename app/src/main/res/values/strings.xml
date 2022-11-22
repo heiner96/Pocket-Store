@@ -9,26 +9,30 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Cerrar Sesión</string>
 
-    <string name="menu_lugar">Lugares</string>
+
+    <string name="menu_objetos">Objetos</string>
+    <string name="menu_agregar_objetos">Agregar Objetos</string>
+    <string name="menu_fragment_update">Actualizar Objeto</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="msg_nombre">Nombre del lugar</string>
-    <string name="msg_correo">eMail (lugar@xxxx.xxx)</string>
+    <string name="msg_nombre">Nombre del objeto</string>
+    <string name="msg_precio">Precio</string>
+    <string name="msg_correo">eMail (tienda@xxxx.xxx)</string>
     <string name="msg_telefono">Teléfono (9999-9999)</string>
     <string name="msg_web">Sitio WEB</string>
-    <string name="msg_add_lugar">Agregar Lugar</string>
-    <string name="bt_uptate_lugar">Actualizar Lugar</string>
-    <string name="msg_lugar_added">Lugar Agregado…</string>
-    <string name="msg_delete_lugar">Eliminar Lugar…</string>
-    <string name="msg_lugar_updated">Lugar Actualizado…</string>
-    <string name="msg_lugar_deleted">Lugar Eliminado…</string>
+    <string name="msg_add_lugar">Agregar Objeto</string>
+    <string name="bt_uptate_lugar">Actualizar Objeto</string>
+    <string name="msg_lugar_added">Objeto Agregado…</string>
+    <string name="msg_delete_lugar">Eliminar Objeto…</string>
+    <string name="msg_object_updated">Objeto Actualizado…</string>
+    <string name="msg_object_deleted">Objeto Eliminado…</string>
     <string name="msg_data">Faltan Datos!</string>
-    <string name="msg_seguro_borrado">¿Está seguro de eliminar el lugar :</string>
+    <string name="msg_seguro_borrado">¿Está seguro de eliminar el Objeto :</string>
     <string name="msg_si">Si</string>
     <string name="msg_no">No</string>
 
@@ -36,7 +40,7 @@
     <string name="msg_phone_call">Realizar llamada telefónica</string>
     <string name="msg_whatsapp_send">Enviar mensaje WhatsApp</string>
     <string name="msg_web_view">Abrir sitio Web</string>
-    <string name="msg_map_view">Ver lugar en mapa</string>
+    <string name="msg_map_view">Ver objeto en mapa</string>
     <string name="tv_latitud_lb">Latitud</string>
     <string name="tv_longitud_lb">Longitud</string>
     <string name="tv_altura_lb">Altura</string>
@@ -45,6 +49,25 @@
     <string name="msg_datos">Faltan datos</string>
     <string name="error">Error</string>
 
-    <string name="menu_home">Home</string>
+    <string name="msgEscucharAudio">Escuchar nota de audio</string>
+    <string name="msg_imagen">Imagen del lugar</string>
+    <string name="graba_pausa">Graba o pausa grabación</string>
+    <string name="escuchaPlay">Escucha grabación</string>
+    <string name="delete_nota">Borra nota de audio</string>
+    <string name="play_nota">Escuchar nota de audio</string>
+    <string name="rec_stop_nota">Graba o detiene nota de audio</string>
+    <string name="tomar_foto">Tomar foto</string>
+    <string name="rotar_l">Rotar a la izquierda</string>
+    <string name="rotale_r">Rota a la derecha</string>
+    <string name="msg_graba_audio">Grabando nota de audio</string>
+    <string name="msg_detener_audio">Nota de audio detenida</string>
+    <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
+    <string name="msg_subiendo_imagen">Subiendo imagen</string>
+    <string name="todo">Pendiente</string>
+
+    <string name="menu_objets">Objetos</string>
+
+    <string name="id_cliente_web">733701149321-c08s2os7nin3lf4ocmrgkrsvi4mh89l6.apps.googleusercontent.com</string>
+
 
 </resources>
