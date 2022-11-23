@@ -1,6 +1,7 @@
 package com.pocket.store.activies
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -50,23 +51,28 @@ class PrincipalActivity : AppCompatActivity() {
         actualiza(navView)
     }
     private fun actualiza(navView: NavigationView) {
-        val vista: View = navView.getHeaderView(0)//para que vea la foto
-        val tvNombre: TextView = vista.findViewById(R.id.nombre_usuario)
-        val tvCorreo: TextView = vista.findViewById(R.id.correo_usuario)
-        val foto: ImageView = vista.findViewById(R.id.foto_usuario)
+        try
+        {
+            val vista: View = navView.getHeaderView(0)//para que vea la foto
+            val tvNombre: TextView = vista.findViewById(R.id.nombre_usuario)
+            val tvCorreo: TextView = vista.findViewById(R.id.correo_usuario)
+            var foto: ImageView = vista.findViewById(R.id.foto_usuario)
 
-        val usuario = Firebase.auth.currentUser
-        tvCorreo.text = usuario?.email
-        tvNombre.text = usuario?.displayName
-        val fotoURL = usuario?.photoUrl.toString()
-        if(fotoURL.isNotEmpty()){
-            Glide.with(this)
-                .load(fotoURL)
-                .circleCrop()
-                .into(foto)
+            val usuario = Firebase.auth.currentUser
+            tvCorreo.text = usuario?.email
+            tvNombre.text = usuario?.displayName
+            val fotoURL = usuario?.photoUrl.toString()
+            if(fotoURL.isNotEmpty() && fotoURL.isNullOrEmpty() && fotoURL.isNullOrBlank()){
+                Glide.with(this)
+                    .load(fotoURL)
+                    .circleCrop()
+                    .into(foto)
 
+            }
         }
-
+        catch (e: Exception){
+            Log.e("TAG",e.stackTraceToString())
+        }
 
     }
 

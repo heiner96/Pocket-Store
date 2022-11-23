@@ -63,7 +63,12 @@
     <string name="msg_detener_audio">Nota de audio detenida</string>
     <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
+    <string name="subiendo_objeto">Subiendo objeto</string>
+    <string name="requiere_whatss_instalado">Primero debes instalar WhatsApp</string>
+    <string name="requiere_wase_instalado">Primero debes instalar Wase</string>
     <string name="todo">Pendiente</string>
+    <string name="wase_ir">waze://?ll=%1$s,%2$s&amp;navigate=yes</string>
+    <string name="wase_descargar">market://details?id=com.waze</string>
 
     <string name="menu_objets">Objetos</string>
 

@@ -51,12 +51,6 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/bt_delete_objeto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/msg_delete_lugar" />
-
-        <Button
             android:id="@+id/bt_update_objeto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -148,6 +142,16 @@
                 android:contentDescription="@string/msg_map_view"
                 android:src="@drawable/ic_location"
                 tools:ignore="ImageContrastCheck" />
+
+            <ImageButton
+                    android:id="@+id/bt_wase"
+                    android:layout_width="50dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/waze"
+                    tools:ignore="ImageContrastCheck" />
+
+
         </LinearLayout>
         <ImageView
             android:id="@+id/imagen"

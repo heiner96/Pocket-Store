@@ -1,17 +1,17 @@
 package com.pocket.store.activies.ui.objects
 
 import android.Manifest
-import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -20,6 +20,7 @@ import com.pocket.store.R
 import com.pocket.store.databinding.FragmentUpdateObjetBinding
 import com.pocket.store.model.Objeto
 import com.pocket.store.viewmodel.ObjectViewModel
+import java.util.*
 
 
 class UpdateObjectFragment : Fragment() {
@@ -54,9 +55,6 @@ class UpdateObjectFragment : Fragment() {
         binding.btUpdateObjeto.setOnClickListener{
             updateObject()
         }
-        binding.btDeleteObjeto.setOnClickListener{
-            deleteObject()
-        }
         binding.btPhone.setOnClickListener{
             llamarLugar()
         }
@@ -68,6 +66,17 @@ class UpdateObjectFragment : Fragment() {
         }
         binding.btLocation.setOnClickListener{
             verMapa()
+        }
+        binding.btWase.setOnClickListener{
+            if(isPackageInstalled("com.waze",requireContext().packageManager))
+            {
+                usarWase(args.objetoArgumento.latitud,args.objetoArgumento.longitud)
+            }
+            else
+            {
+                Toast.makeText(requireContext(),getString(R.string.requiere_wase_instalado), Toast.LENGTH_LONG ).show()
+            }
+
         }
         if(args.objetoArgumento.ruta_audio?.isNotEmpty() == true){
             mediaPlayer = MediaPlayer()
@@ -88,7 +97,29 @@ class UpdateObjectFragment : Fragment() {
         binding.btPlay.setOnClickListener{
             mediaPlayer.start()
         }
+
         return binding.root
+
+    }
+
+    private fun usarWase(latitude: Double?,lontitude: Double?) {
+
+            try {
+                var url: String? = ""
+
+                    url = java.lang.String.format(
+                        getString(R.string.wase_ir),
+                        latitude.toString(),
+                        lontitude.toString())
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
+
+            } catch (ex: ActivityNotFoundException) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.wase_descargar)))
+                startActivity(intent)
+            } catch (ex: Exception) {
+
+            }
 
     }
 
@@ -118,9 +149,20 @@ class UpdateObjectFragment : Fragment() {
             Toast.makeText(requireContext(),getString(R.string.msg_data), Toast.LENGTH_LONG).show()
         }
     }
-
+    private fun isPackageInstalled(packageName: String, packageManager: PackageManager): Boolean {
+        return try {
+            packageManager.getPackageInfo(packageName, 0)
+            true
+        } catch (e: PackageManager.NameNotFoundException) {
+            false
+        }
+    }
     private fun mensajeWhastApps()
     {
+        if(!isPackageInstalled("com.whatsapp", requireContext().packageManager )){
+            Toast.makeText(requireContext(),getString(R.string.requiere_whatss_instalado),Toast.LENGTH_LONG).show()
+            return
+        }
         val para = binding.etTelefonoTienda.text.toString()
         if(para.isNotEmpty()){ //puedo enviar Mensaje WhatsApp
             val intent = Intent(Intent.ACTION_VIEW)
@@ -173,19 +215,6 @@ class UpdateObjectFragment : Fragment() {
         else{
             Toast.makeText(requireContext(),getString(R.string.msg_data), Toast.LENGTH_LONG).show()
         }
-    }
-
-    private fun deleteObject() {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle(getString(R.string.msg_delete_lugar))
-        builder.setMessage(getString(R.string.msg_seguro_borrado) +" ${args.objetoArgumento.nombre}?")
-        builder.setNegativeButton(getString(R.string.msg_no)){_,_ ->}
-        builder.setPositiveButton(getString(R.string.msg_si)){_,_ ->
-            objectViewModel.deleteObjeto(args.objetoArgumento)
-            Toast.makeText(requireContext(),getString(R.string.msg_object_deleted), Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_updateFragment_to_nav_objects)
-        }
-        builder.show()
     }
 
     private fun updateObject() {

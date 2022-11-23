@@ -53,7 +53,7 @@ class AddObjectFragment : Fragment() {
         _binding = FragmentAddObjectBinding.inflate(inflater, container, false)
         binding.btAddObjeto.setOnClickListener {
             binding.progressBar.visibility = ProgressBar.VISIBLE
-
+            binding.msgMensaje.visibility = View.VISIBLE
             binding.msgMensaje.text = getString(R.string.msg_subiendo_audio)
 
             subeAudio()
@@ -174,6 +174,7 @@ class AddObjectFragment : Fragment() {
     private fun subeObjetos(rutaPublicaAudio: String, rutaPublicaImagen: String) {
         val nombre = binding.etNombreObjeto.text.toString().toUpperCase()
         if (nombre.isNotEmpty()) {//se puede agregar un objeto
+            binding.msgMensaje.text = getString(R.string.subiendo_objeto)
             val correo = binding.etCorreoTienda.text.toString()
             val telefono = binding.etTelefonoTienda.text.toString()
             val web = binding.etWeb.text.toString()
@@ -184,6 +185,7 @@ class AddObjectFragment : Fragment() {
             val objeto = Objeto("", nombre, correo, web, telefono, latitud, longitud, altura, precio, rutaPublicaAudio, rutaPublicaImagen)
             objetosViewModel.saveObjetos(objeto)
             Toast.makeText(requireContext(), getText(R.string.msg_lugar_added), Toast.LENGTH_SHORT)
+            binding.msgMensaje.visibility = View.GONE
             findNavController().navigate(R.id.action_addObjectFragment_to_nav_objects)
         } else {//sino no se puede agregar el objectos
 
