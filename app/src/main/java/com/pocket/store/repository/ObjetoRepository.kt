@@ -7,18 +7,20 @@ import com.pocket.store.model.Objeto
 class ObjetoRepository (private val lugarDao: ObjetoDao)
 {
 
-    fun saveObjecto(objeto: Objeto)
+    fun saveObjecto(objeto: Objeto, email: String, coleccion2: String)
     {
-        lugarDao.saveObjeto(objeto)
+        lugarDao.saveObjeto(objeto,email, coleccion2)
     }
 
-    fun deleteObjecto(objeto: Objeto)
+    fun deleteObjecto(objeto: Objeto, email: String, coleccion2: String)
     {
-        lugarDao.deleteObjeto(objeto)
+        lugarDao.deleteObjeto(objeto, email, coleccion2)
     }
 
+    fun getObjetos(email : String, coleccion2 : String): MutableLiveData<List<Objeto>> {
+        return lugarDao.getObjetos(email,coleccion2)
+    }
 
-    val getObjetos : MutableLiveData<List<Objeto>> =  lugarDao.getObjetos()
 
 
 }

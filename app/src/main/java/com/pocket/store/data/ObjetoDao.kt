@@ -12,8 +12,8 @@ import com.pocket.store.model.Objeto
 class ObjetoDao {
 
     private val coleccion1 = "PocketStoreApp"
-    private val usuario = Firebase.auth.currentUser?.email.toString()
-    private val coleccion2 = "misObjetos"
+    //private val usuario = Firebase.auth.currentUser?.email.toString()
+    //private val coleccion2 = "misObjetos"
 
     private var firestore : FirebaseFirestore =
         FirebaseFirestore.getInstance()
@@ -24,14 +24,14 @@ class ObjetoDao {
             .Builder().build()
     }
 
-    fun saveObjeto(objeto: Objeto){
+    fun saveObjeto(objeto: Objeto, email: String, coleccion2: String){
 
         val documento : DocumentReference
         if(objeto.id.isEmpty())
         {
             documento = firestore
                 .collection(coleccion1)
-                .document(usuario)
+                .document(email)
                 .collection(coleccion2)
                 .document()
             objeto.id = documento.id
@@ -39,7 +39,7 @@ class ObjetoDao {
         else{
             documento = firestore
                 .collection(coleccion1)
-                .document(usuario)
+                .document(email)
                 .collection(coleccion2)
                 .document(objeto.id)
         }
@@ -54,12 +54,12 @@ class ObjetoDao {
     }
 
 
-    fun deleteObjeto(objecto: Objeto){
+    fun deleteObjeto(objecto: Objeto,email: String, coleccion2: String){
 
         if(objecto.id.isNotEmpty()){
             firestore
                 .collection(coleccion1)
-                .document(usuario)
+                .document(email)
                 .collection(coleccion2)
                 .document(objecto.id)
                 .delete()
@@ -74,12 +74,12 @@ class ObjetoDao {
         }
     }
 
-    fun getObjetos() : MutableLiveData<List<Objeto>> {
+    fun getObjetos(email: String,coleccion2: String) : MutableLiveData<List<Objeto>> {
         val listaObjetos = MutableLiveData<List<Objeto>>()
 
         firestore
             .collection(coleccion1)
-            .document(usuario)
+            .document(email)
             .collection(coleccion2)
             .addSnapshotListener{ instantenea, error->
 

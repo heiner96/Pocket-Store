@@ -1,4 +1,4 @@
-package com.pocket.store.activies.ui.objects
+package com.pocket.store.activies.ui.shared
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,13 +15,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.pocket.store.R
 import com.pocket.store.adatper.ObjetosAdapter
-import com.pocket.store.databinding.FragmentObjectsBinding
+import com.pocket.store.databinding.FragmentSharedBinding
 import com.pocket.store.model.Objeto
 import com.pocket.store.viewmodel.ObjectViewModel
 
-class ObjectsFragment : Fragment() {
-
-    private var _binding: FragmentObjectsBinding? = null
+class SharedFragment : Fragment()
+{
+    private var _binding: FragmentSharedBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,18 +40,15 @@ class ObjectsFragment : Fragment() {
         objetosViewModel =
             ViewModelProvider(this).get(ObjectViewModel::class.java)
 
-        _binding = FragmentObjectsBinding.inflate(inflater, container, false)
+        _binding = FragmentSharedBinding.inflate(inflater, container, false)
 
-        binding.btAddObject.setOnClickListener{
-            findNavController().navigate(R.id.action_nav_objects_to_addObjectFragment)
-        }
         val objetosAdapter = ObjetosAdapter()
-        val reciclador = binding.reciclador
+        val reciclador = binding.recicladorShared
         reciclador.adapter = objetosAdapter
         reciclador.layoutManager = LinearLayoutManager(requireContext())
-        objetosViewModel.obtenerObjetos(usuario,"misObjetos")
+        objetosViewModel.obtenerObjetos(usuario,"compartidos")
         objetosViewModel.getObjetos.observe(viewLifecycleOwner) { objetos->
-            objetosAdapter.setData(objetos,"misObjetos")
+            objetosAdapter.setData(objetos,"compartidos")
             listado = objetos
         }
         ItemTouchHelper(object :
@@ -69,13 +65,13 @@ class ObjectsFragment : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
                 val position = viewHolder.adapterPosition
                 val objetosAdapter = ObjetosAdapter()
-                val reciclador = binding.reciclador
+                val reciclador = binding.recicladorShared
                 reciclador.adapter = objetosAdapter
                 reciclador.layoutManager = LinearLayoutManager(requireContext())
                 deleteObject(listado.get(position))
-                objetosViewModel.obtenerObjetos(usuario,"misObjetos")
+                objetosViewModel.obtenerObjetos(usuario,"compartidos")
                 objetosViewModel.getObjetos.observe(viewLifecycleOwner) { objetos->
-                    objetosAdapter.setData(objetos,"misObjetos")
+                    objetosAdapter.setData(objetos,"compartidos")
                     listado = objetos
                 }
             }
@@ -87,9 +83,9 @@ class ObjectsFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle(getString(R.string.msg_delete_lugar))
         builder.setMessage(getString(R.string.msg_seguro_borrado) +" ${objecto.nombre}?")
-        builder.setNegativeButton(getString(R.string.msg_no)){_,_ ->}
-        builder.setPositiveButton(getString(R.string.msg_si)){_,_ ->
-            objetosViewModel.deleteObjeto(objecto,usuario,"misObjetos")
+        builder.setNegativeButton(getString(R.string.msg_no)){ _, _ ->}
+        builder.setPositiveButton(getString(R.string.msg_si)){ _, _ ->
+            objetosViewModel.deleteObjeto(objecto,usuario,"compartidos")
             Toast.makeText(requireContext(),getString(R.string.msg_object_deleted), Toast.LENGTH_SHORT).show()
         }
         builder.show()
@@ -98,5 +94,6 @@ class ObjectsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 
 }

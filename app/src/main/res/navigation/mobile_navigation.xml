@@ -16,17 +16,24 @@
         <action
             android:id="@+id/action_nav_objects_to_updateFragment"
             app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_nav_objects_to_shareObjectFragment"
+            app:destination="@id/shareObjectFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.pocket.store.activies.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_compartidos"
+        android:name="com.pocket.store.activies.ui.shared.SharedFragment"
+        android:label="@string/title_shared_objects"
+        tools:layout="@layout/fragment_shared" >
+        <action
+            android:id="@+id/action_nav_compartidos_to_sharedObjectFragment"
+            app:destination="@id/sharedObjectFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.pocket.store.activies.ui.slideshow.SlideshowFragment"
+        android:name="com.pocket.store.activies.ui.projectObjects.ProjectObjectsFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
@@ -48,6 +55,30 @@
             app:destination="@id/nav_objects" />
         <argument
             android:name="objeto_argumento"
+            app:argType="com.pocket.store.model.Objeto" />
+    </fragment>
+    <fragment
+        android:id="@+id/shareObjectFragment"
+        android:name="com.pocket.store.activies.ui.objects.ShareObjectFragment"
+        android:label="@string/title_share_object"
+        tools:layout="@layout/fragment_share_object" >
+        <action
+            android:id="@+id/action_shareObjectFragment_to_nav_objects"
+            app:destination="@id/nav_objects" />
+        <argument
+            android:name="shareObject"
+            app:argType="com.pocket.store.model.Objeto" />
+    </fragment>
+    <fragment
+        android:id="@+id/sharedObjectFragment"
+        android:name="com.pocket.store.activies.ui.shared.SharedObjectFragment"
+        android:label="@string/title_shared_object"
+        tools:layout="@layout/fragment_shared_object" >
+        <action
+            android:id="@+id/action_sharedObjectFragment_to_nav_compartidos"
+            app:destination="@id/nav_compartidos" />
+        <argument
+            android:name="sharedObject"
             app:argType="com.pocket.store.model.Objeto" />
     </fragment>
 </navigation>

@@ -42,6 +42,7 @@ class AddObjectFragment : Fragment() {
     //para capturar la imagen del lugar...
     private lateinit var tomarFotoActivity: ActivityResultLauncher<Intent>
     private lateinit var imagenUtiles: ImagenUtiles
+    private val usuario = Firebase.auth.currentUser?.email.toString()
 
 
     override fun onCreateView(
@@ -183,7 +184,7 @@ class AddObjectFragment : Fragment() {
             val altura = binding.tvAltura.text.toString().toDouble()
             val precio = binding.etPrecioObjeto.text.toString().toDouble()
             val objeto = Objeto("", nombre, correo, web, telefono, latitud, longitud, altura, precio, rutaPublicaAudio, rutaPublicaImagen)
-            objetosViewModel.saveObjetos(objeto)
+            objetosViewModel.saveObjetos(objeto,usuario,"misObjetos")
             Toast.makeText(requireContext(), getText(R.string.msg_lugar_added), Toast.LENGTH_SHORT)
             binding.msgMensaje.visibility = View.GONE
             findNavController().navigate(R.id.action_addObjectFragment_to_nav_objects)

@@ -1,4 +1,4 @@
-package com.pocket.store.activies.ui.objects
+package com.pocket.store.activies.ui.shared
 
 import android.Manifest
 import android.content.ActivityNotFoundException
@@ -7,11 +7,11 @@ import android.content.pm.PackageManager
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -19,20 +19,22 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.pocket.store.R
+import com.pocket.store.activies.ui.objects.UpdateObjectFragmentArgs
+import com.pocket.store.databinding.FragmentSharedObjectBinding
 import com.pocket.store.databinding.FragmentUpdateObjetBinding
 import com.pocket.store.model.Objeto
 import com.pocket.store.viewmodel.ObjectViewModel
-import java.util.*
 
 
-class UpdateObjectFragment : Fragment() {
-    private var _binding: FragmentUpdateObjetBinding? = null
+class SharedObjectFragment : Fragment()
+{
+    private var _binding: FragmentSharedObjectBinding? = null
     private val binding get() = _binding!!
     private lateinit var objectViewModel: ObjectViewModel
     private val usuario = Firebase.auth.currentUser?.email.toString()
 
     //Defino un argumento para obtener los argumentos pasados las fragmento
-    private val args by navArgs<UpdateObjectFragmentArgs>()
+    private val args by navArgs<SharedObjectFragmentArgs>()
 
     private lateinit var mediaPlayer: MediaPlayer
 
@@ -42,21 +44,18 @@ class UpdateObjectFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         objectViewModel = ViewModelProvider(this).get(ObjectViewModel::class.java)
-        _binding = FragmentUpdateObjetBinding.inflate(inflater, container, false)
+        _binding = FragmentSharedObjectBinding.inflate(inflater, container, false)
 
-        binding.etNombre.setText(args.objetoArgumento.nombre.toUpperCase())
-        binding.etCorreoTienda.setText(args.objetoArgumento.correo)
-        binding.etPrecioUpdate.setText(args.objetoArgumento.precio.toString())
-        binding.etTelefonoTienda.setText(args.objetoArgumento.telefono)
-        binding.etWeb.setText(args.objetoArgumento.web)
-        binding.tvLongitud.text = args.objetoArgumento.longitud.toString()
-        binding.tvLatitud.text = args.objetoArgumento.latitud.toString()
-        binding.tvAltura.text = args.objetoArgumento.altura.toString()
+        binding.etNombre.setText(args.sharedObject.nombre.toUpperCase())
+        binding.etCorreoTienda.setText(args.sharedObject.correo)
+        binding.etPrecioUpdate.setText(args.sharedObject.precio.toString())
+        binding.etTelefonoTienda.setText(args.sharedObject.telefono)
+        binding.etWeb.setText(args.sharedObject.web)
+        binding.tvLongitud.text = args.sharedObject.longitud.toString()
+        binding.tvLatitud.text = args.sharedObject.latitud.toString()
+        binding.tvAltura.text = args.sharedObject.altura.toString()
         binding.btEmail.setOnClickListener{
             escribirCorreo()
-        }
-        binding.btUpdateObjeto.setOnClickListener{
-            updateObject()
         }
         binding.btPhone.setOnClickListener{
             llamarLugar()
@@ -73,7 +72,7 @@ class UpdateObjectFragment : Fragment() {
         binding.btWase.setOnClickListener{
             if(isPackageInstalled("com.waze",requireContext().packageManager))
             {
-                usarWase(args.objetoArgumento.latitud,args.objetoArgumento.longitud)
+                usarWase(args.sharedObject.latitud,args.sharedObject.longitud)
             }
             else
             {
@@ -81,9 +80,9 @@ class UpdateObjectFragment : Fragment() {
             }
 
         }
-        if(args.objetoArgumento.ruta_audio?.isNotEmpty() == true){
+        if(args.sharedObject.ruta_audio?.isNotEmpty() == true){
             mediaPlayer = MediaPlayer()
-            mediaPlayer.setDataSource(args.objetoArgumento.ruta_audio)
+            mediaPlayer.setDataSource(args.sharedObject.ruta_audio)
             mediaPlayer.prepare()
             binding.btPlay.isEnabled = true
         }
@@ -91,9 +90,9 @@ class UpdateObjectFragment : Fragment() {
             binding.btPlay.isEnabled = false
         }
 
-        if(args.objetoArgumento.ruta_imagen?.isNotEmpty() == true){
+        if(args.sharedObject.ruta_imagen?.isNotEmpty() == true){
             Glide.with(requireContext())
-                .load(args.objetoArgumento.ruta_imagen)
+                .load(args.sharedObject.ruta_imagen)
                 .fitCenter()
                 .into(binding.imagen)
         }
@@ -107,22 +106,22 @@ class UpdateObjectFragment : Fragment() {
 
     private fun usarWase(latitude: Double?,lontitude: Double?) {
 
-            try {
-                var url: String? = ""
+        try {
+            var url: String? = ""
 
-                    url = java.lang.String.format(
-                        getString(R.string.wase_ir),
-                        latitude.toString(),
-                        lontitude.toString())
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                    startActivity(intent)
+            url = java.lang.String.format(
+                getString(R.string.wase_ir),
+                latitude.toString(),
+                lontitude.toString())
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
 
-            } catch (ex: ActivityNotFoundException) {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.wase_descargar)))
-                startActivity(intent)
-            } catch (ex: Exception) {
+        } catch (ex: ActivityNotFoundException) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.wase_descargar)))
+            startActivity(intent)
+        } catch (ex: Exception) {
 
-            }
+        }
 
     }
 
@@ -163,7 +162,7 @@ class UpdateObjectFragment : Fragment() {
     private fun mensajeWhastApps()
     {
         if(!isPackageInstalled("com.whatsapp", requireContext().packageManager )){
-            Toast.makeText(requireContext(),getString(R.string.requiere_whatss_instalado),Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(),getString(R.string.requiere_whatss_instalado), Toast.LENGTH_LONG).show()
             return
         }
         val para = binding.etTelefonoTienda.text.toString()
@@ -219,34 +218,9 @@ class UpdateObjectFragment : Fragment() {
             Toast.makeText(requireContext(),getString(R.string.msg_data), Toast.LENGTH_LONG).show()
         }
     }
-
-    private fun updateObject() {
-        val nombre = binding.etNombre.text.toString().toUpperCase()
-        if(nombre.isNotEmpty()){//se puede agregar un lugar
-            val correo = binding.etCorreoTienda.text.toString()
-            val precio = binding.etPrecioUpdate.text.toString().toDouble()
-            val telefono = binding.etTelefonoTienda.text.toString()
-            val web = binding.etWeb.text.toString()
-            val objeto = Objeto(args.objetoArgumento.id,
-                nombre,correo,web,telefono,
-                args.objetoArgumento.latitud,args.objetoArgumento.longitud,args.objetoArgumento.altura,precio,
-                args.objetoArgumento.ruta_audio,args.objetoArgumento.ruta_imagen)
-            objectViewModel.saveObjetos(objeto,usuario,"misObjetos")
-            Toast.makeText(requireContext(),getText(R.string.msg_object_updated), Toast.LENGTH_SHORT)
-            findNavController().navigate(R.id.action_updateFragment_to_nav_objects)
-        }
-        else{//sino no se puede modificar el lugar
-
-
-            Toast.makeText(requireContext(),getText(R.string.msg_data), Toast.LENGTH_LONG)
-
-        }
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
 }

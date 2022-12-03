@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg02"
+    android:orientation="vertical"
+    tools:context=".activies.ui.objects.UpdateObjectFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/et_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:gravity="center"
+            android:enabled="false"
+            android:hint="@string/msg_nombre"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg" />
+        <EditText
+            android:id="@+id/et_precio_update"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="@string/msg_precio"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg" />
+
+        <EditText
+            android:id="@+id/et_correo_tienda"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="@string/msg_correo"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg" />
+
+
+        <EditText
+            android:id="@+id/et_web"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="@string/msg_web"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg" />
+
+        <EditText
+            android:id="@+id/et_correo_share"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edittext"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textEmailAddress"
+            android:hint="@string/msg_share_friend"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg" />
+
+        <Button
+            android:id="@+id/bt_share_objeto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bt_share_object"/>
+
+        <ImageView
+            android:id="@+id/imagen"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:contentDescription="@string/msg_imagen"
+            android:scaleType="centerInside"
+            tools:ignore="ImageContrastCheck"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+    </LinearLayout>
+
+
+</ScrollView>

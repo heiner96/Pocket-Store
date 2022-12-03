@@ -27,6 +27,14 @@
     <string name="msg_web">Sitio WEB</string>
     <string name="msg_add_lugar">Agregar Objeto</string>
     <string name="bt_uptate_lugar">Actualizar Objeto</string>
+    <string name="bt_share_object">Compartir este Objeto</string>
+    <string name="msg_share_friend">Correo para compartir</string>
+    <string name="msg_share_friend_error_data">Debes agregar el correo</string>
+    <string name="title_share_object">Compartir Objeto</string>
+    <string name="title_shared_object">Objeto Compartido</string>
+    <string name="title_shared_objects">Objetos compartidos</string>
+    <string name="msg_share_friend_error_not_registered">Correo ingresado no existe</string>
+    <string name="msg_shared_friend">Objecto compartido…</string>
     <string name="msg_lugar_added">Objeto Agregado…</string>
     <string name="msg_delete_lugar">Eliminar Objeto…</string>
     <string name="msg_object_updated">Objeto Actualizado…</string>

@@ -1,18 +1,21 @@
 package com.pocket.store.adatper
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pocket.store.activies.ui.objects.ObjectsFragmentDirections
+import com.pocket.store.activies.ui.shared.SharedFragmentDirections
 import com.pocket.store.databinding.ObjetoFilaBinding
 import com.pocket.store.model.Objeto
 
-class ObjetosAdatper : RecyclerView.Adapter<ObjetosAdatper.ObjetosViewHolder>()
+class ObjetosAdapter : RecyclerView.Adapter<ObjetosAdapter.ObjetosViewHolder>()
 {
 
     private var listaObjetos = emptyList<Objeto>()
+    private var flag: String = ""
 
     inner class ObjetosViewHolder(private val itemBinding: ObjetoFilaBinding) :
         RecyclerView.ViewHolder(itemBinding.root){
@@ -25,12 +28,29 @@ class ObjetosAdatper : RecyclerView.Adapter<ObjetosAdatper.ObjetosViewHolder>()
                 .load(objeto.ruta_imagen)
                 .circleCrop()
                 .into(itemBinding.imagen)
-
-            itemBinding.vistaFila.setOnClickListener {
-                val accion = ObjectsFragmentDirections
-                    .actionNavObjectsToUpdateFragment(objeto)
-                itemView.findNavController().navigate(accion)
+            if(flag.equals("misObjetos")){
+                itemBinding.btShare.setVisibility(View.VISIBLE)
+                itemBinding.btShare.setOnClickListener{
+                    val accion = ObjectsFragmentDirections
+                        .actionNavObjectsToShareObjectFragment(objeto)
+                    itemView.findNavController().navigate(accion)
+                }
+                itemBinding.vistaFila.setOnClickListener {
+                    val accion = ObjectsFragmentDirections
+                        .actionNavObjectsToUpdateFragment(objeto)
+                    itemView.findNavController().navigate(accion)
+                }
             }
+            else if(flag.equals("compartidos")){
+                itemBinding.btShare.setVisibility(View.GONE)
+                itemBinding.vistaFila.setOnClickListener {
+                    val accion = SharedFragmentDirections
+                        .actionNavCompartidosToSharedObjectFragment(objeto)
+                    itemView.findNavController().navigate(accion)
+                }
+            }
+
+
         }
     }
 
@@ -54,8 +74,9 @@ class ObjetosAdatper : RecyclerView.Adapter<ObjetosAdatper.ObjetosViewHolder>()
         return listaObjetos.size
     }
 
-    fun setData(lugares : List<Objeto>){
+    fun setData(lugares : List<Objeto>,flag: String){
         this.listaObjetos = lugares
+        this.flag = flag
         notifyDataSetChanged()
     }
 

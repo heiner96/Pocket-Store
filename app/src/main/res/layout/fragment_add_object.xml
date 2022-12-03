@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg02"
     tools:context=".activies.ui.objects.AddObjectFragment">
 
     <LinearLayout
@@ -15,40 +16,60 @@
         <EditText
             android:id="@+id/et_nombre_objeto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:ems="10"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg"
+            android:background="@drawable/bg_edittext"
             android:hint="@string/msg_nombre"
             android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/et_precio_objeto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:ems="10"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg"
+            android:background="@drawable/bg_edittext"
             android:hint="@string/msg_precio"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/et_correo_tienda"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:ems="10"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg"
+            android:background="@drawable/bg_edittext"
             android:hint="@string/msg_correo"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/et_telefono_tienda"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:ems="10"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg"
+            android:background="@drawable/bg_edittext"
             android:hint="@string/msg_telefono"
             android:inputType="phone" />
 
         <EditText
             android:id="@+id/et_web"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
             android:ems="10"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/editTextBg"
+            android:background="@drawable/bg_edittext"
             android:hint="@string/msg_web"
             android:inputType="textPersonName" />
 
