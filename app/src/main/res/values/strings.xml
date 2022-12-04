@@ -18,6 +18,9 @@
 
 
     <string name="msg_nombre">Nombre del objeto</string>
+    <string name="msg_nombre_project">Nombre del proyecto</string>
+    <string name="msg_cliente_project">Nombre del cliente</string>
+    <string name="msg_add_project">Agregar proyecto</string>
     <string name="msg_precio">Precio</string>
     <string name="msg_correo">eMail (tienda@xxxx.xxx)</string>
     <string name="msg_telefono">Teléfono (9999-9999)</string>
@@ -37,11 +40,15 @@
     <string name="msg_share_friend_error_not_registered">Correo ingresado no existe</string>
     <string name="msg_shared_friend">Objecto compartido…</string>
     <string name="msg_lugar_added">Objeto Agregado…</string>
+    <string name="msg_project_added">Proyecto Agregado…</string>
     <string name="msg_delete_objeto">Eliminar Objeto…</string>
     <string name="msg_delete_project">Eliminar Projecto…</string>
     <string name="msg_object_updated">Objeto Actualizado…</string>
+    <string name="msg_project_updated">Proyecto Actualizado…</string>
+    <string name="msg_project_object_confirm">Confirmar asignación…</string>
     <string name="msg_object_deleted">Objeto Eliminado…</string>
     <string name="msg_project_deleted">Proyecto Eliminado…</string>
+    <string name="msg_nombre_project_">Nombre del proyecto</string>
     <string name="msg_data">Faltan Datos!</string>
     <string name="msg_seguro_borrado">¿Está seguro de eliminar el Objeto :</string>
     <string name="msg_seguro_borrado_project">¿Está seguro de eliminar el Projecto :</string>
@@ -49,6 +56,13 @@
     <string name="msg_no">No</string>
     <string name="msg_menu_projects_objects">Objetos por proyectos</string>
     <string name="msg_menu_projects">Tus proyectos</string>
+    <string name="msg_project_client">Nombre del cliente</string>
+    <string name="msg_project_update">Actualizar proyecto</string>
+    <string name="msg_project_object">Confirmar asignacion de objeto al proyecto…</string>
+    <string name="msg_project_object_confirm_button">Confirmar asignación</string>
+    <string name="msg_project_object_confirm_project">Proyecto a asignar:</string>
+    <string name="msg_project_object_confirm_object">Objecto por asignar:</string>
+    <string name="msg_project_object_confirm_success">Objecto asignado!</string>
 
     <string name="msg_enviar_correo">Enviar correo electrónico</string>
     <string name="msg_phone_call">Realizar llamada telefónica</string>
@@ -78,6 +92,7 @@
     <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
     <string name="msg_subiendo_imagen">Subiendo imagen</string>
     <string name="subiendo_objeto">Subiendo objeto</string>
+    <string name="subiendo_proyecto">Subiendo proyecto</string>
     <string name="requiere_whatss_instalado">Primero debes instalar WhatsApp</string>
     <string name="requiere_wase_instalado">Primero debes instalar Wase</string>
     <string name="todo">Pendiente</string>

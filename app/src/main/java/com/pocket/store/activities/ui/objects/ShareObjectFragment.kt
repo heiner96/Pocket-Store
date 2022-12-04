@@ -64,7 +64,7 @@ class ShareObjectFragment : Fragment() {
     {
         try {
             objetosViewModel.saveObjetos(objetoArgumento,friendEmail,"compartidos")
-            Toast.makeText(requireContext(), getText(R.string.msg_shared_friend), Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), getText(R.string.msg_shared_friend), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_shareObjectFragment_to_nav_objects)
         }
         catch (ex: Exception){

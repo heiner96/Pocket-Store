@@ -16,7 +16,7 @@ import com.google.firebase.ktx.Firebase
 import com.pocket.store.R
 import com.pocket.store.adatper.ProjectObjectsAdapter
 import com.pocket.store.databinding.FragmentProjectObjectsBinding
-import com.pocket.store.model.Objeto
+import com.pocket.store.model.Project
 import com.pocket.store.viewmodel.ProjectObjectsViewModel
 
 class ProjectObjectsFragment : Fragment()
@@ -29,7 +29,8 @@ class ProjectObjectsFragment : Fragment()
 
 
     private lateinit var projectObjectViewModel: ProjectObjectsViewModel
-    private lateinit var listado: List<Objeto>
+    private lateinit var listado: List<Project>
+
     private val usuario = Firebase.auth.currentUser?.email.toString()
 
     override fun onCreateView(
@@ -42,54 +43,16 @@ class ProjectObjectsFragment : Fragment()
 
         _binding = FragmentProjectObjectsBinding.inflate(inflater, container, false)
 
-
-        val objetosAdapter = ProjectObjectsAdapter()
+        val projectAdapter = ProjectObjectsAdapter()
         val reciclador = binding.recicladorProjectObjects
-        reciclador.adapter = objetosAdapter
+        reciclador.adapter = projectAdapter
         reciclador.layoutManager = LinearLayoutManager(requireContext())
-        projectObjectViewModel.obtenerObjetos(usuario,"objetos_proyectos","casa_escazu")
-        projectObjectViewModel.getObjetos.observe(viewLifecycleOwner) { objetos->
-            objetosAdapter.setData(objetos)
-            listado = objetos
+        projectObjectViewModel.getProjects.observe(viewLifecycleOwner) { project->
+            projectAdapter.setData(project)
+            listado = project
         }
-        ItemTouchHelper(object :
-            ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            // Called when a user swipes left or right on a ViewHolder
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
-                val position = viewHolder.adapterPosition
-                val objetosAdapter = ProjectObjectsAdapter()
-                val reciclador = binding.recicladorProjectObjects
-                reciclador.adapter = objetosAdapter
-                reciclador.layoutManager = LinearLayoutManager(requireContext())
-                deleteObject(listado.get(position))
-                projectObjectViewModel.obtenerObjetos(usuario,"objetos_proyectos","casa_escazu")
-                projectObjectViewModel.getObjetos.observe(viewLifecycleOwner) { objetos->
-                    objetosAdapter.setData(objetos)
-                    listado = objetos
-                }
-            }
-        }).attachToRecyclerView(reciclador)
 
         return binding.root
-    }
-    private fun deleteObject(objecto: Objeto) {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle(getString(R.string.msg_delete_objeto))
-        builder.setMessage(getString(R.string.msg_seguro_borrado) +" ${objecto.nombre}?")
-        builder.setNegativeButton(getString(R.string.msg_no)){ _, _ ->}
-        builder.setPositiveButton(getString(R.string.msg_si)){ _, _ ->
-            projectObjectViewModel.deleteObjeto(objecto,usuario,"objetos_proyectos","casa_escazu")
-            Toast.makeText(requireContext(),getString(R.string.msg_object_deleted), Toast.LENGTH_SHORT).show()
-        }
-        builder.show()
     }
     override fun onDestroyView() {
         super.onDestroyView()

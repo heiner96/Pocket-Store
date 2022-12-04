@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -42,6 +43,9 @@ class ObjectsFragment : Fragment() {
 
         _binding = FragmentObjectsBinding.inflate(inflater, container, false)
 
+        binding.btAddObject.setOnClickListener{
+            findNavController().navigate(R.id.action_nav_objects_to_addObjectFragment)
+        }
 
         val objetosAdapter = ObjetosAdapter()
         val reciclador = binding.reciclador

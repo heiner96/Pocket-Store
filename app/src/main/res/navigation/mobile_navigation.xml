@@ -94,8 +94,11 @@
             android:id="@+id/action_projectObjectsViewFragment_to_nav_project_objects"
             app:destination="@id/nav_project_objects" />
         <argument
-            android:name="project_object_view"
-            app:argType="com.pocket.store.model.Objeto" />
+            android:name="project_view"
+            app:argType="com.pocket.store.model.Project" />
+        <action
+            android:id="@+id/action_projectObjectsViewFragment_to_confirmProjectObjectFragment"
+            app:destination="@id/confirmProjectObjectFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_projects"
@@ -128,6 +131,21 @@
             app:destination="@id/nav_projects" />
         <argument
             android:name="update_project"
+            app:argType="com.pocket.store.model.Project" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmProjectObjectFragment"
+        android:name="com.pocket.store.activities.ui.projectObjects.ConfirmProjectObjectFragment"
+        android:label="@string/msg_project_object_confirm"
+        tools:layout="@layout/fragment_confirm_project_object" >
+        <action
+            android:id="@+id/action_confirmProjectObjectFragment_to_projectObjectsViewFragment"
+            app:destination="@id/projectObjectsViewFragment" />
+        <argument
+            android:name="confirmObject"
+            app:argType="com.pocket.store.model.Objeto" />
+        <argument
+            android:name="confirmProject"
             app:argType="com.pocket.store.model.Project" />
     </fragment>
 </navigation>

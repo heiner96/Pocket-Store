@@ -185,13 +185,13 @@ class AddObjectFragment : Fragment() {
             val precio = binding.etPrecioObjeto.text.toString().toDouble()
             val objeto = Objeto("", nombre, correo, web, telefono, latitud, longitud, altura, precio, rutaPublicaAudio, rutaPublicaImagen)
             objetosViewModel.saveObjetos(objeto,usuario,"misObjetos")
-            Toast.makeText(requireContext(), getText(R.string.msg_lugar_added), Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(), getText(R.string.msg_lugar_added), Toast.LENGTH_SHORT).show()
             binding.msgMensaje.visibility = View.GONE
             findNavController().navigate(R.id.action_addObjectFragment_to_nav_objects)
         } else {//sino no se puede agregar el objectos
 
 
-            Toast.makeText(requireContext(), getText(R.string.msg_data), Toast.LENGTH_LONG)
+            Toast.makeText(requireContext(), getText(R.string.msg_data), Toast.LENGTH_LONG).show()
 
         }
     }

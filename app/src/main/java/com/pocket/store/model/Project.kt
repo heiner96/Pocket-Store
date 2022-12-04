@@ -9,6 +9,10 @@ class Project  (
     val nombre: String,
     val nombreCliente: String?,
     val ruta_imagen: String?,
+    val latitud: Double?,
+    val longitud: Double?,
+    val altura: Double?,
+    val ruta_audio: String?,
 
 ) : Parcelable {
     constructor():
@@ -16,6 +20,10 @@ class Project  (
         "",
         "",
         "",
+        "",
+        0.0,
+        0.0,
+        0.0,
         ""
     )
 }

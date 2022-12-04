@@ -232,13 +232,13 @@ class UpdateObjectFragment : Fragment() {
                 args.objetoArgumento.latitud,args.objetoArgumento.longitud,args.objetoArgumento.altura,precio,
                 args.objetoArgumento.ruta_audio,args.objetoArgumento.ruta_imagen)
             objectViewModel.saveObjetos(objeto,usuario,"misObjetos")
-            Toast.makeText(requireContext(),getText(R.string.msg_object_updated), Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(),getText(R.string.msg_object_updated), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_updateFragment_to_nav_objects)
         }
         else{//sino no se puede modificar el lugar
 
 
-            Toast.makeText(requireContext(),getText(R.string.msg_data), Toast.LENGTH_LONG)
+            Toast.makeText(requireContext(),getText(R.string.msg_data), Toast.LENGTH_LONG).show()
 
         }
     }

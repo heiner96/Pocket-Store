@@ -33,7 +33,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="@string/msg_precio"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/et_correo_tienda"

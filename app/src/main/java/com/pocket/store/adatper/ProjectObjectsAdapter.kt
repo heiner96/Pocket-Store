@@ -1,35 +1,33 @@
 package com.pocket.store.adatper
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pocket.store.activities.ui.projectObjects.ProjectObjectsFragmentDirections
-import com.pocket.store.databinding.ObjetoFilaBinding
-import com.pocket.store.model.Objeto
+import com.pocket.store.databinding.ProjectFilaBinding
+import com.pocket.store.model.Project
 
 class ProjectObjectsAdapter  : RecyclerView.Adapter<ProjectObjectsAdapter.ProjectObjetsViewHolder>()
 {
-    private var listaObjetos = emptyList<Objeto>()
+    private var listaProjects = emptyList<Project>()
 
 
-    inner class ProjectObjetsViewHolder(private val itemBinding: ObjetoFilaBinding) :
+    inner class ProjectObjetsViewHolder(private val itemBinding: ProjectFilaBinding) :
         RecyclerView.ViewHolder(itemBinding.root){
-        fun bind(objeto : Objeto){
-            itemBinding.tvNombre.text = objeto.nombre
-            itemBinding.tvCorreoLugarFila.text = objeto.correo
-            itemBinding.tvTelefono.text = objeto.telefono
+        fun bind(project : Project){
+            itemBinding.tvNombreProject.text = project.nombre
+            itemBinding.tvClienteProject.text = project.nombreCliente
+
 
             Glide.with(itemBinding.root.context)
-                .load(objeto.ruta_imagen)
+                .load(project.ruta_imagen)
                 .circleCrop()
-                .into(itemBinding.imagen)
-            itemBinding.btShare.setVisibility(View.GONE)
-            itemBinding.vistaFila.setOnClickListener {
+                .into(itemBinding.imagenProject)
+            itemBinding.vistaFilaProject.setOnClickListener {
                 val accion = ProjectObjectsFragmentDirections
-                    .actionNavProjectObjectsToProjectObjectsViewFragment(objeto)
+                    .actionNavProjectObjectsToProjectObjectsViewFragment(project)
                 itemView.findNavController().navigate(accion)
             }
 
@@ -38,7 +36,7 @@ class ProjectObjectsAdapter  : RecyclerView.Adapter<ProjectObjectsAdapter.Projec
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectObjetsViewHolder {
         //creo un elemeto en memoria de una "cajita" vista_fila
-        val itemBinding = ObjetoFilaBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val itemBinding = ProjectFilaBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         //retorno la cajita en memoria
         return ProjectObjetsViewHolder(itemBinding)
 
@@ -46,18 +44,18 @@ class ProjectObjectsAdapter  : RecyclerView.Adapter<ProjectObjectsAdapter.Projec
 
     override fun onBindViewHolder(holder: ProjectObjetsViewHolder, position: Int) {
         //Obtengo el objeto que debo "dibujar" en la fila del recyclerView que "voy"
-        val objetoActual = listaObjetos[position]
+        val projectActual = listaProjects[position]
 
-        holder.bind(objetoActual) //LLamo a la función que efectivamente "pinta" la inflate
+        holder.bind(projectActual) //LLamo a la función que efectivamente "pinta" la inflate
 
     }
 
     override fun getItemCount(): Int {
-        return listaObjetos.size
+        return listaProjects.size
     }
 
-    fun setData(lugares : List<Objeto>){
-        this.listaObjetos = lugares
+    fun setData(project : List<Project>){
+        this.listaProjects = project
         notifyDataSetChanged()
     }
 
