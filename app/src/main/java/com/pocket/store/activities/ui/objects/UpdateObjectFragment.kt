@@ -1,4 +1,4 @@
-package com.pocket.store.activies.ui.objects
+package com.pocket.store.activities.ui.objects
 
 import android.Manifest
 import android.content.ActivityNotFoundException

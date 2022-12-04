@@ -15,10 +15,7 @@
     <string name="menu_objetos">Objetos</string>
     <string name="menu_agregar_objetos">Agregar Objetos</string>
     <string name="menu_fragment_update">Actualizar Objeto</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
     <string name="msg_nombre">Nombre del objeto</string>
     <string name="msg_precio">Precio</string>
@@ -32,17 +29,26 @@
     <string name="msg_share_friend_error_data">Debes agregar el correo</string>
     <string name="title_share_object">Compartir Objeto</string>
     <string name="title_shared_object">Objeto Compartido</string>
+    <string name="title_add_object_to_project">Agregar objecto al proyecto</string>
+    <string name="title_urs_project">Tus Proyectos</string>
+    <string name="title_add_project">Agregar proyecto</string>
+    <string name="title_update_project">Actualizar proyecto</string>
     <string name="title_shared_objects">Objetos compartidos</string>
     <string name="msg_share_friend_error_not_registered">Correo ingresado no existe</string>
     <string name="msg_shared_friend">Objecto compartido…</string>
     <string name="msg_lugar_added">Objeto Agregado…</string>
-    <string name="msg_delete_lugar">Eliminar Objeto…</string>
+    <string name="msg_delete_objeto">Eliminar Objeto…</string>
+    <string name="msg_delete_project">Eliminar Projecto…</string>
     <string name="msg_object_updated">Objeto Actualizado…</string>
     <string name="msg_object_deleted">Objeto Eliminado…</string>
+    <string name="msg_project_deleted">Proyecto Eliminado…</string>
     <string name="msg_data">Faltan Datos!</string>
     <string name="msg_seguro_borrado">¿Está seguro de eliminar el Objeto :</string>
+    <string name="msg_seguro_borrado_project">¿Está seguro de eliminar el Projecto :</string>
     <string name="msg_si">Si</string>
     <string name="msg_no">No</string>
+    <string name="msg_menu_projects_objects">Objetos por proyectos</string>
+    <string name="msg_menu_projects">Tus proyectos</string>
 
     <string name="msg_enviar_correo">Enviar correo electrónico</string>
     <string name="msg_phone_call">Realizar llamada telefónica</string>
@@ -81,6 +87,8 @@
     <string name="menu_objets">Objetos</string>
 
     <string name="id_cliente_web">733701149321-c08s2os7nin3lf4ocmrgkrsvi4mh89l6.apps.googleusercontent.com</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

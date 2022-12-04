@@ -9,12 +9,16 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_objets" />
         <item
+            android:id="@+id/nav_projects"
+            android:icon="@drawable/ic_projects"
+            android:title="@string/msg_menu_projects" />
+        <item
             android:id="@+id/nav_compartidos"
             android:icon="@drawable/ic_share"
             android:title="@string/title_shared_objects" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_project_objects"
+            android:icon="@drawable/ic_project_objects"
+            android:title="@string/msg_menu_projects_objects" />
     </group>
 </menu>

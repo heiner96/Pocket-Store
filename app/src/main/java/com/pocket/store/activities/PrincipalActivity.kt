@@ -1,4 +1,4 @@
-package com.pocket.store.activies
+package com.pocket.store.activities
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -43,7 +42,7 @@ class PrincipalActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_objects, R.id.nav_compartidos, R.id.nav_slideshow
+                R.id.nav_objects, R.id.nav_compartidos, R.id.nav_project_objects,R.id.nav_projects
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

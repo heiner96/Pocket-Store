@@ -30,7 +30,4 @@ class ObjectViewModel (application: Application) : AndroidViewModel(application)
         viewModelScope.launch { repository.deleteObjecto(objeto,email,colecion2) }
     }
 
-
-
-
 }

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/vista_fila"
+    android:id="@+id/vista_fila_project"
     android:layout_width="match_parent"
     android:layout_height="160dp"
     android:background="#264D99"
@@ -18,7 +18,7 @@
         android:background="@android:color/transparent">
 
         <TextView
-            android:id="@+id/tv_nombre"
+            android:id="@+id/tv_nombre_project"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -32,17 +32,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imagen"
+            android:id="@+id/imagen_project"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nombre"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nombre_project"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/tv_telefono"
+            android:id="@+id/tv_cliente_project"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -50,29 +50,10 @@
             android:text="TextView"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imagen"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nombre" />
+            app:layout_constraintStart_toEndOf="@+id/imagen_project"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nombre_project" />
 
-        <TextView
-            android:id="@+id/tv_correo_lugar_fila"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="TextView"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tv_telefono"
-            app:layout_constraintTop_toBottomOf="@+id/tv_telefono" />
 
-        <ImageView
-            android:id="@+id/bt_share"
-            android:layout_width="58dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.959"
-            app:srcCompat="@drawable/ic_share" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

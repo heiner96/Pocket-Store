@@ -1,4 +1,4 @@
-package com.pocket.store.activies.ui.shared
+package com.pocket.store.activities.ui.projects
 
 import android.app.AlertDialog
 import android.os.Bundle
@@ -14,22 +14,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.pocket.store.R
-import com.pocket.store.adatper.ObjetosAdapter
-import com.pocket.store.databinding.FragmentSharedBinding
-import com.pocket.store.model.Objeto
-import com.pocket.store.viewmodel.ObjectViewModel
+import com.pocket.store.adatper.ProjectAdapter
+import com.pocket.store.databinding.FragmentProjectsBinding
+import com.pocket.store.model.Project
+import com.pocket.store.viewmodel.ProjectViewModel
 
-class SharedFragment : Fragment()
+
+class ProjectsFragment : Fragment()
 {
-    private var _binding: FragmentSharedBinding? = null
+    private var _binding: FragmentProjectsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
 
-    private lateinit var objetosViewModel: ObjectViewModel
-    private lateinit var listado: List<Objeto>
+    private lateinit var projectsViewModel: ProjectViewModel
+    private lateinit var listado: List<Project>
     private val usuario = Firebase.auth.currentUser?.email.toString()
 
     override fun onCreateView(
@@ -37,19 +38,19 @@ class SharedFragment : Fragment()
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        objetosViewModel =
-            ViewModelProvider(this).get(ObjectViewModel::class.java)
+        projectsViewModel =
+            ViewModelProvider(this).get(ProjectViewModel::class.java)
 
-        _binding = FragmentSharedBinding.inflate(inflater, container, false)
+        _binding = FragmentProjectsBinding.inflate(inflater, container, false)
 
-        val objetosAdapter = ObjetosAdapter()
-        val reciclador = binding.recicladorShared
-        reciclador.adapter = objetosAdapter
+
+        val projectAdapter = ProjectAdapter()
+        val reciclador = binding.recicladorProject
+        reciclador.adapter = projectAdapter
         reciclador.layoutManager = LinearLayoutManager(requireContext())
-        objetosViewModel.obtenerObjetos(usuario,"compartidos")
-        objetosViewModel.getObjetos.observe(viewLifecycleOwner) { objetos->
-            objetosAdapter.setData(objetos,"compartidos")
-            listado = objetos
+        projectsViewModel.getProjects.observe(viewLifecycleOwner) { projects->
+            projectAdapter.setData(projects)
+            listado = projects
         }
         ItemTouchHelper(object :
             ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
@@ -64,29 +65,28 @@ class SharedFragment : Fragment()
             // Called when a user swipes left or right on a ViewHolder
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
                 val position = viewHolder.adapterPosition
-                val objetosAdapter = ObjetosAdapter()
-                val reciclador = binding.recicladorShared
-                reciclador.adapter = objetosAdapter
+                val projectAdapter = ProjectAdapter()
+                val reciclador = binding.recicladorProject
+                reciclador.adapter = projectAdapter
                 reciclador.layoutManager = LinearLayoutManager(requireContext())
-                deleteObject(listado.get(position))
-                objetosViewModel.obtenerObjetos(usuario,"compartidos")
-                objetosViewModel.getObjetos.observe(viewLifecycleOwner) { objetos->
-                    objetosAdapter.setData(objetos,"compartidos")
-                    listado = objetos
+                deleteProject(listado.get(position))
+                projectsViewModel.getProjects.observe(viewLifecycleOwner) { projects->
+                    projectAdapter.setData(projects)
+                    listado = projects
                 }
             }
         }).attachToRecyclerView(reciclador)
 
         return binding.root
     }
-    private fun deleteObject(objecto: Objeto) {
+    private fun deleteProject(project: Project) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle(getString(R.string.msg_delete_lugar))
-        builder.setMessage(getString(R.string.msg_seguro_borrado) +" ${objecto.nombre}?")
+        builder.setTitle(getString(R.string.msg_delete_project))
+        builder.setMessage(getString(R.string.msg_seguro_borrado_project) +" ${project.nombre}?")
         builder.setNegativeButton(getString(R.string.msg_no)){ _, _ ->}
         builder.setPositiveButton(getString(R.string.msg_si)){ _, _ ->
-            objetosViewModel.deleteObjeto(objecto,usuario,"compartidos")
-            Toast.makeText(requireContext(),getString(R.string.msg_object_deleted), Toast.LENGTH_SHORT).show()
+            projectsViewModel.deleteProject(project)
+            Toast.makeText(requireContext(),getString(R.string.msg_project_deleted), Toast.LENGTH_SHORT).show()
         }
         builder.show()
     }
@@ -94,6 +94,4 @@ class SharedFragment : Fragment()
         super.onDestroyView()
         _binding = null
     }
-
-
 }

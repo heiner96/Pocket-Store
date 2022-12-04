@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg02"
     android:orientation="vertical"
-    tools:context=".activies.ui.objects.UpdateObjectFragment">
+    tools:context=".activities.ui.objects.UpdateObjectFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

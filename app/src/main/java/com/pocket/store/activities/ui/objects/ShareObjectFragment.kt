@@ -1,35 +1,18 @@
-package com.pocket.store.activies.ui.objects
+package com.pocket.store.activities.ui.objects
 
-import android.Manifest
-import android.app.Activity
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
 import com.pocket.store.R
-import com.pocket.store.databinding.FragmentAddObjectBinding
 import com.pocket.store.databinding.FragmentShareObjectBinding
 import com.pocket.store.model.Objeto
-import com.pocket.store.utiles.AudioUtiles
-import com.pocket.store.utiles.ImagenUtiles
 import com.pocket.store.viewmodel.ObjectViewModel
 
 

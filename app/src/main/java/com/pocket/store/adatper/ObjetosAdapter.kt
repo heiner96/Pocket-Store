@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.pocket.store.activies.ui.objects.ObjectsFragmentDirections
-import com.pocket.store.activies.ui.shared.SharedFragmentDirections
+import com.pocket.store.activities.ui.objects.ObjectsFragmentDirections
+import com.pocket.store.activities.ui.shared.SharedFragmentDirections
 import com.pocket.store.databinding.ObjetoFilaBinding
 import com.pocket.store.model.Objeto
 
@@ -22,7 +22,7 @@ class ObjetosAdapter : RecyclerView.Adapter<ObjetosAdapter.ObjetosViewHolder>()
         fun bind(objeto : Objeto){
             itemBinding.tvNombre.text = objeto.nombre
             itemBinding.tvCorreoLugarFila.text = objeto.correo
-            itemBinding.tvTelefonoLugar.text = objeto.telefono
+            itemBinding.tvTelefono.text = objeto.telefono
 
             Glide.with(itemBinding.root.context)
                 .load(objeto.ruta_imagen)

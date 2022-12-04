@@ -1,4 +1,4 @@
-package com.pocket.store.activies.ui.shared
+package com.pocket.store.activities.ui.shared
 
 import android.Manifest
 import android.content.ActivityNotFoundException
@@ -13,16 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.pocket.store.R
-import com.pocket.store.activies.ui.objects.UpdateObjectFragmentArgs
 import com.pocket.store.databinding.FragmentSharedObjectBinding
-import com.pocket.store.databinding.FragmentUpdateObjetBinding
-import com.pocket.store.model.Objeto
 import com.pocket.store.viewmodel.ObjectViewModel
 
 

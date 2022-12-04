@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.pocket.store.activies.PrincipalActivity
+import com.pocket.store.activities.PrincipalActivity
 import com.pocket.store.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

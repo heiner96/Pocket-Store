@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_objects"
-        android:name="com.pocket.store.activies.ui.objects.ObjectsFragment"
+        android:name="com.pocket.store.activities.ui.objects.ObjectsFragment"
         android:label="@string/menu_objetos"
         tools:layout="@layout/fragment_objects" >
         <action
@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/nav_compartidos"
-        android:name="com.pocket.store.activies.ui.shared.SharedFragment"
+        android:name="com.pocket.store.activities.ui.shared.SharedFragment"
         android:label="@string/title_shared_objects"
         tools:layout="@layout/fragment_shared" >
         <action
@@ -32,13 +32,17 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.pocket.store.activies.ui.projectObjects.ProjectObjectsFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_project_objects"
+        android:name="com.pocket.store.activities.ui.projectObjects.ProjectObjectsFragment"
+        android:label="@string/msg_menu_projects_objects"
+        tools:layout="@layout/fragment_project_objects" >
+        <action
+            android:id="@+id/action_nav_project_objects_to_projectObjectsViewFragment"
+            app:destination="@id/projectObjectsViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addObjectFragment"
-        android:name="com.pocket.store.activies.ui.objects.AddObjectFragment"
+        android:name="com.pocket.store.activities.ui.objects.AddObjectFragment"
         android:label="@string/menu_agregar_objetos"
         tools:layout="@layout/fragment_add_object" >
         <action
@@ -47,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.pocket.store.activies.ui.objects.UpdateObjectFragment"
+        android:name="com.pocket.store.activities.ui.objects.UpdateObjectFragment"
         android:label="@string/menu_fragment_update"
         tools:layout="@layout/fragment_update_objet" >
         <action
@@ -59,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/shareObjectFragment"
-        android:name="com.pocket.store.activies.ui.objects.ShareObjectFragment"
+        android:name="com.pocket.store.activities.ui.objects.ShareObjectFragment"
         android:label="@string/title_share_object"
         tools:layout="@layout/fragment_share_object" >
         <action
@@ -71,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/sharedObjectFragment"
-        android:name="com.pocket.store.activies.ui.shared.SharedObjectFragment"
+        android:name="com.pocket.store.activities.ui.shared.SharedObjectFragment"
         android:label="@string/title_shared_object"
         tools:layout="@layout/fragment_shared_object" >
         <action
@@ -80,5 +84,50 @@
         <argument
             android:name="sharedObject"
             app:argType="com.pocket.store.model.Objeto" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectObjectsViewFragment"
+        android:name="com.pocket.store.activities.ui.projectObjects.ProjectObjectsViewFragment"
+        android:label="@string/title_add_object_to_project"
+        tools:layout="@layout/fragment_project_objects_view" >
+        <action
+            android:id="@+id/action_projectObjectsViewFragment_to_nav_project_objects"
+            app:destination="@id/nav_project_objects" />
+        <argument
+            android:name="project_object_view"
+            app:argType="com.pocket.store.model.Objeto" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_projects"
+        android:name="com.pocket.store.activities.ui.projects.ProjectsFragment"
+        android:label="@string/title_urs_project"
+        tools:layout="@layout/fragment_projects" >
+        <action
+            android:id="@+id/action_projectsFragment_to_addProjectFragment"
+            app:destination="@id/addProjectFragment" />
+        <action
+            android:id="@+id/action_projectsFragment_to_updateProjectFragment"
+            app:destination="@id/updateProjectFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProjectFragment"
+        android:name="com.pocket.store.activities.ui.projects.AddProjectFragment"
+        android:label="@string/title_add_project"
+        tools:layout="@layout/fragment_add_project" >
+        <action
+            android:id="@+id/action_addProjectFragment_to_projectsFragment"
+            app:destination="@id/nav_projects" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateProjectFragment"
+        android:name="com.pocket.store.activities.ui.projects.UpdateProjectFragment"
+        android:label="@string/title_update_project"
+        tools:layout="@layout/fragment_update_project" >
+        <action
+            android:id="@+id/action_updateProjectFragment_to_projectsFragment"
+            app:destination="@id/nav_projects" />
+        <argument
+            android:name="update_project"
+            app:argType="com.pocket.store.model.Project" />
     </fragment>
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg02"
-    tools:context=".activies.ui.objects.ObjectsFragment">
+    tools:context=".activities.ui.objects.ObjectsFragment">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bt_add_object"
