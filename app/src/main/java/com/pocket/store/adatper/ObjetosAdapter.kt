@@ -48,6 +48,8 @@ class ObjetosAdapter : RecyclerView.Adapter<ObjetosAdapter.ObjetosViewHolder>()
                         .actionNavCompartidosToSharedObjectFragment(objeto)
                     itemView.findNavController().navigate(accion)
                 }
+            }else if(flag.equals("projectObjects")){
+                itemBinding.btShare.setVisibility(View.GONE)
             }
 
 

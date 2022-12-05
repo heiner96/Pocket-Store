@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -20,6 +21,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.pocket.store.R
 import com.pocket.store.activities.ui.objects.UpdateObjectFragmentArgs
+import com.pocket.store.activities.ui.shared.SharedFragmentDirections
 import com.pocket.store.databinding.FragmentConfirmProjectObjectBinding
 import com.pocket.store.databinding.FragmentUpdateObjetBinding
 import com.pocket.store.model.Objeto
@@ -65,7 +67,9 @@ class ConfirmProjectObjectFragment : Fragment() {
         binding.btConfirmObbjectToProject.setOnClickListener{
             projectObjectViewModel.saveObjectProject(args.confirmProject,args.confirmObject)
             Toast.makeText(requireContext(),getString(R.string.msg_project_object_confirm_success), Toast.LENGTH_LONG).show()
-            findNavController().navigate(R.id.action_confirmProjectObjectFragment_to_projectObjectsViewFragment)
+            val accion = ConfirmProjectObjectFragmentDirections
+                .actionConfirmProjectObjectFragmentToProjectObjectsViewFragment(args.confirmProject)
+            findNavController().navigate(accion)
         }
         return binding.root
 

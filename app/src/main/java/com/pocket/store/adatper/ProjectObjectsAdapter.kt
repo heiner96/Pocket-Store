@@ -1,6 +1,7 @@
 package com.pocket.store.adatper
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,7 @@ class ProjectObjectsAdapter  : RecyclerView.Adapter<ProjectObjectsAdapter.Projec
         fun bind(project : Project){
             itemBinding.tvNombreProject.text = project.nombre
             itemBinding.tvClienteProject.text = project.nombreCliente
-
+            itemBinding.imgProjectEye.setVisibility(View.GONE)
 
             Glide.with(itemBinding.root.context)
                 .load(project.ruta_imagen)

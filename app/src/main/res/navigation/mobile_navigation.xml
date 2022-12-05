@@ -111,6 +111,9 @@
         <action
             android:id="@+id/action_projectsFragment_to_updateProjectFragment"
             app:destination="@id/updateProjectFragment" />
+        <action
+            android:id="@+id/action_nav_projects_to_viewObjectsProjectFragment"
+            app:destination="@id/viewObjectsProjectFragment" />
     </fragment>
     <fragment
         android:id="@+id/addProjectFragment"
@@ -146,6 +149,18 @@
             app:argType="com.pocket.store.model.Objeto" />
         <argument
             android:name="confirmProject"
+            app:argType="com.pocket.store.model.Project" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewObjectsProjectFragment"
+        android:name="com.pocket.store.activities.ui.projects.ViewObjectsProjectFragment"
+        android:label="@string/msg_fragment_view_objects_project"
+        tools:layout="@layout/fragment_view_objects_project" >
+        <action
+            android:id="@+id/action_viewObjectsProjectFragment_to_nav_projects"
+            app:destination="@id/nav_projects" />
+        <argument
+            android:name="proyect_view_objects"
             app:argType="com.pocket.store.model.Project" />
     </fragment>
 </navigation>

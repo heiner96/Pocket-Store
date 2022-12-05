@@ -54,6 +54,16 @@
             app:layout_constraintStart_toEndOf="@+id/imagen_project"
             app:layout_constraintTop_toBottomOf="@+id/tv_nombre_project" />
 
+        <ImageView
+            android:id="@+id/img_project_eye"
+            android:layout_width="71dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.921"
+            app:layout_constraintStart_toEndOf="@+id/imagen_project"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cliente_project"
+            app:srcCompat="@drawable/ic_eye" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

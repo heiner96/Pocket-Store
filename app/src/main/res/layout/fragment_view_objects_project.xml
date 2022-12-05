@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg02"
+    tools:context=".activities.ui.projects.ViewObjectsProjectFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_mensage_confirmacion_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="@string/msg_fragment_view_objects_project_title"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reciclador_project"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</ScrollView>

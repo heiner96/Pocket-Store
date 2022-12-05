@@ -17,6 +17,7 @@ class ProjectObjectsDao
     private val projectObjectsColection = "projectObjects"
     private val projectsColection = "projects"
     private val objetosColection = "misObjetos"
+    private val objectsColeccion = "objectsColeccion"
 
     private var firestore : FirebaseFirestore =
         FirebaseFirestore.getInstance()
@@ -88,16 +89,16 @@ class ProjectObjectsDao
     fun saveObjectProject(confirmProject: Project, confirmObject: Objeto)
     {
         val documento : DocumentReference
-        if(confirmProject.id.isEmpty())
+        if(confirmObject.id.isEmpty())
         {
             documento = firestore
                 .collection(coleccion1)
                 .document(usuario)
                 .collection(projectObjectsColection)//proyectos
                 .document(confirmProject.nombre)//nombre del proyecto
-                .collection(confirmObject.nombre)
+                .collection(objectsColeccion)
                 .document()
-            confirmProject.id = documento.id
+            confirmObject.id = documento.id
         }
         else{
             documento = firestore
@@ -105,16 +106,70 @@ class ProjectObjectsDao
                 .document(usuario)
                 .collection(projectObjectsColection)//proyectos
                 .document(confirmProject.nombre)//nombre del proyecto
-                .collection(confirmObject.nombre)
-                .document(confirmProject.id)
+                .collection(objectsColeccion)
+                .document(confirmObject.id)
         }
 
-        documento.set(confirmProject)
+        documento.set(confirmObject)
             .addOnSuccessListener {
                 Log.d("SaveObjecto","Objecto agregado o modifico")
             }
             .addOnCanceledListener {
                 Log.e("SaveObjecto","Objecto NO agregado o modificado")
             }
+    }
+
+    fun getObjetosProject(project_nombre: String): MutableLiveData<List<Objeto>> {
+        val listaObjetos = MutableLiveData<List<Objeto>>()
+
+        firestore
+            .collection(coleccion1)
+            .document(usuario)
+            .collection(projectObjectsColection)//proyectos
+            .document(project_nombre)//nombre del proyecto
+            .collection(objectsColeccion)
+            .addSnapshotListener{ instantenea, error->
+
+                if(error!=null){//hubo un error en la recureparion de los datos
+                    return@addSnapshotListener
+                }
+                if(instantenea != null){
+                    //Se logró recuperar la info y hay informacion
+                    val lista = ArrayList<Objeto>()
+                    instantenea.documents.forEach{
+                        var objetos = it.toObject(Objeto::class.java)
+                        if(objetos!=null)//Si se pudo convertir en objecto
+                        {
+                            lista.add(objetos)
+                        }
+                    }
+                    listaObjetos.value = lista
+                }
+
+            }
+
+        return listaObjetos
+    }
+
+    fun deleteObjetoFromProject(objecto: Objeto, project: Project)
+    {
+        if(objecto.id.isNotEmpty()){
+            firestore
+                .collection(coleccion1)
+                .document(usuario)
+                .collection(projectObjectsColection)
+                .document(project.nombre)//nombre del proyecto
+                .collection(objectsColeccion)
+                .document(objecto.id)
+                .delete()
+
+                .addOnSuccessListener {
+                    Log.d("DeleteObjeto","Objeto eliminado")
+                }
+                .addOnCanceledListener {
+                    Log.e("DeleteObjeto","Objeto NO eliminado")
+
+                }
+        }
     }
 }

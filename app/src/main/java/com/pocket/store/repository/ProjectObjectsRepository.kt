@@ -11,6 +11,15 @@ class ProjectObjectsRepository (private val projectObjectsDao: ProjectObjectsDao
         projectObjectsDao.saveObjectProject(confirmProject,confirmObject)
     }
 
+    fun getObjetosProject(project_nombre: String): MutableLiveData<List<Objeto>>
+    {
+        return projectObjectsDao.getObjetosProject(project_nombre)
+    }
+
+    fun deleteObjetoFromProject(objecto: Objeto, project: Project) {
+        return projectObjectsDao.deleteObjetoFromProject(objecto,project)
+    }
+
     val getProjects: MutableLiveData<List<Project>> = projectObjectsDao.getProjects()
 
     val getObjects: MutableLiveData<List<Objeto>> = projectObjectsDao.getObjects()

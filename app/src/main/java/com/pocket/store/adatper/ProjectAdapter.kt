@@ -31,6 +31,11 @@ class ProjectAdapter : RecyclerView.Adapter<ProjectAdapter.ProjectsViewHolder>()
                     .actionProjectsFragmentToUpdateProjectFragment(project)
                 itemView.findNavController().navigate(accion)
             }
+            itemBinding.imgProjectEye.setOnClickListener{
+                val action = ProjectsFragmentDirections
+                    .actionNavProjectsToViewObjectsProjectFragment(project)
+                itemView.findNavController().navigate(action)
+            }
         }
     }
 

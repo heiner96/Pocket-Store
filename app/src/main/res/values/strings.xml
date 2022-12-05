@@ -51,6 +51,7 @@
     <string name="msg_nombre_project_">Nombre del proyecto</string>
     <string name="msg_data">Faltan Datos!</string>
     <string name="msg_seguro_borrado">¿Está seguro de eliminar el Objeto :</string>
+    <string name="msg_seguro_borrado_from_project">¿Está seguro de eliminar el objeto </string>
     <string name="msg_seguro_borrado_project">¿Está seguro de eliminar el Projecto :</string>
     <string name="msg_si">Si</string>
     <string name="msg_no">No</string>
@@ -63,6 +64,8 @@
     <string name="msg_project_object_confirm_project">Proyecto a asignar:</string>
     <string name="msg_project_object_confirm_object">Objecto por asignar:</string>
     <string name="msg_project_object_confirm_success">Objecto asignado!</string>
+    <string name="msg_fragment_view_objects_project">Listado de objetos</string>
+    <string name="msg_fragment_view_objects_project_title">Listado de objetos por proyecto :</string>
 
     <string name="msg_enviar_correo">Enviar correo electrónico</string>
     <string name="msg_phone_call">Realizar llamada telefónica</string>
