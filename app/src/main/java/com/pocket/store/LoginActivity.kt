@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
         binding.btLogin.setOnClickListener { hacelogin() }
         binding.btRegister.setOnClickListener { haceRegitro() }
-
+        binding.btLogin.visibility
         //Se establecen los parametros par hacer la autenticacion en Google
         //keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN)
@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
 
         //Set fija la solicitud del "cliente" de google
         googleSignInClient = GoogleSignIn.getClient(this,gso)
-        binding.btGoogle.setOnClickListener{ googleSignIn() }
+
 
     }
 
